@@ -329,7 +329,7 @@ async function main() {
     });
 
     console.log("scraping TYT");
-    // await scrapeTYT(context);
+    await scrapeTYT(context);
     console.log("scraping SAY");
     await scrapeAYT(context, "say");
     console.log("scraping SOZ");
