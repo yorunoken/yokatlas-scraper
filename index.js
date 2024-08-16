@@ -155,10 +155,6 @@ async function scrapeAYT(context, type) {
                     studentQuota2023,
                     studentQuota2022,
                     studentQuota2021,
-                    studentStatus2024,
-                    studentStatus2023,
-                    studentStatus2022,
-                    studentStatus2021,
                     fullnessStatus,
                     enrolled2024,
                     enrolled2023,
@@ -172,7 +168,7 @@ async function scrapeAYT(context, type) {
                     baseScore2023,
                     baseScore2022,
                     baseScore2021
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `);
 
     let index = 1;
@@ -205,9 +201,10 @@ async function scrapeAYT(context, type) {
                 yopCode,
                 universityName,
                 faculty,
+                _, // "Akademik Kadro" bunu yok sayıyoruz
                 className,
-                educationDuration,
                 city,
+                educationDuration,
                 universityStyle,
                 scholarshipRate,
                 educationStyle,
@@ -215,10 +212,6 @@ async function scrapeAYT(context, type) {
                 studentQuota2023,
                 studentQuota2022,
                 studentQuota2021,
-                studentStatus2024,
-                studentStatus2023,
-                studentStatus2022,
-                studentStatus2021,
                 fullnessStatus,
                 enrolled2024,
                 enrolled2023,
@@ -239,19 +232,15 @@ async function scrapeAYT(context, type) {
                 universityName,
                 faculty,
                 className,
+                educationStyle,
                 educationDuration,
                 city,
                 universityStyle,
                 scholarshipRate,
-                educationStyle,
                 studentQuota2024,
                 studentQuota2023,
                 studentQuota2022,
                 studentQuota2021,
-                studentStatus2024,
-                studentStatus2023,
-                studentStatus2022,
-                studentStatus2021,
                 fullnessStatus,
                 enrolled2024: isNaN(Number(enrolled2024))
                     ? null
@@ -288,8 +277,8 @@ async function scrapeAYT(context, type) {
                 rowObj.universityName,
                 rowObj.faculty,
                 rowObj.className,
-                rowObj.educationDuration,
                 rowObj.city,
+                rowObj.educationDuration,
                 rowObj.universityStyle,
                 rowObj.scholarshipRate,
                 rowObj.educationStyle,
@@ -297,10 +286,6 @@ async function scrapeAYT(context, type) {
                 rowObj.studentQuota2023,
                 rowObj.studentQuota2022,
                 rowObj.studentQuota2021,
-                rowObj.studentStatus2024,
-                rowObj.studentStatus2023,
-                rowObj.studentStatus2022,
-                rowObj.studentStatus2021,
                 rowObj.fullnessStatus,
                 rowObj.enrolled2024,
                 rowObj.enrolled2023,
@@ -337,7 +322,7 @@ async function main() {
     });
 
     console.log("scraping TYT");
-    await scrapeTYT(context);
+    // await scrapeTYT(context);
     console.log("scraping SAY");
     await scrapeAYT(context, "say");
     console.log("scraping SOZ");
