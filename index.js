@@ -172,7 +172,7 @@ async function scrapeAYT(context, type) {
                     baseScore2023,
                     baseScore2022,
                     baseScore2021
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `);
 
     let index = 1;
@@ -253,10 +253,18 @@ async function scrapeAYT(context, type) {
                 studentStatus2022,
                 studentStatus2021,
                 fullnessStatus,
-                enrolled2024: Number(enrolled2024),
-                enrolled2023: Number(enrolled2023),
-                enrolled2022: Number(enrolled2022),
-                enrolled2021: Number(enrolled2021),
+                enrolled2024: isNaN(Number(enrolled2024))
+                    ? null
+                    : Number(enrolled2024),
+                enrolled2023: isNaN(Number(enrolled2023))
+                    ? null
+                    : Number(enrolled2023),
+                enrolled2022: isNaN(Number(enrolled2022))
+                    ? null
+                    : Number(enrolled2022),
+                enrolled2021: isNaN(Number(enrolled2021))
+                    ? null
+                    : Number(enrolled2021),
                 tbs2024: isNaN(Number(tbs2024)) ? null : Number(tbs2024),
                 tbs2023: isNaN(Number(tbs2023)) ? null : Number(tbs2023),
                 tbs2022: isNaN(Number(tbs2022)) ? null : Number(tbs2022),
