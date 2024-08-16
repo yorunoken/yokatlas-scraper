@@ -49,7 +49,12 @@ async function scrapeTYT(context) {
             const textArray = innerText
                 .split(/\n|\t/)
                 .map((text) => text.trim())
-                .filter((text) => text !== "" && text !== "Listeme Ekle")
+                .filter(
+                    (text) =>
+                        text !== "" &&
+                        text !== "Listeme Ekle" &&
+                        text !== "* Eski Kod",
+                )
                 .map((text) => text.replace(/\./g, "").replace(/\,/g, "."));
 
             const [
@@ -189,7 +194,12 @@ async function scrapeAYT(context, type) {
             const textArray = innerText
                 .split(/\n|\t/)
                 .map((text) => text.trim())
-                .filter((text) => text !== "" && text !== "Listeme Ekle")
+                .filter(
+                    (text) =>
+                        text !== "" &&
+                        text !== "Listeme Ekle" &&
+                        text !== "* Eski Kod",
+                )
                 .map((text) =>
                     text
                         .replace(/\./g, "")
