@@ -62,7 +62,7 @@ async function scrapeTYT(context) {
                 universityName,
                 faculty,
                 className,
-                educationTime,
+                educationDuration,
                 city,
                 universityStyle,
                 scholarshipRate,
@@ -77,12 +77,18 @@ async function scrapeTYT(context) {
                 tbs2023,
             ] = textArray;
 
+            const educationDurationMatch =
+                educationDuration.match(/(\d+)\s*Yıllık/);
+            console.log(educationDurationMatch);
+
             const rowObj = {
                 yopCode,
                 universityName,
                 faculty,
                 className,
-                educationDuration: educationTime,
+                educationDuration: educationDurationMatch
+                    ? educationDurationMatch[1]
+                    : educationDuration,
                 city,
                 universityStyle,
                 scholarshipRate,
@@ -237,13 +243,18 @@ async function scrapeAYT(context, type) {
                 baseScore2021,
             ] = textArray;
 
+            const educationDurationMatch =
+                educationDuration.match(/(\d+)\s*Yıllık/);
+
             const rowObj = {
                 yopCode,
                 universityName,
                 faculty,
                 className,
                 educationStyle,
-                educationDuration,
+                educationDuration: educationDurationMatch
+                    ? educationDurationMatch[1]
+                    : educationDuration,
                 city,
                 universityStyle,
                 scholarshipRate,
