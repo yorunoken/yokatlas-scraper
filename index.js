@@ -9,6 +9,8 @@ async function scrapeTYT(context) {
         "https://yokatlas.yok.gov.tr/tercih-sihirbazi-t3-tablo.php?p=tyt";
     await page.goto(url);
 
+    await page.waitForTimeout(2000);
+
     const insertStmt = db.prepare(`
             INSERT INTO tytData (
                 yop_code,
@@ -79,7 +81,6 @@ async function scrapeTYT(context) {
 
             const educationDurationMatch =
                 educationDuration.match(/(\d+)\s*Yıllık/);
-            console.log(educationDurationMatch);
 
             const rowObj = {
                 yopCode,
@@ -149,7 +150,7 @@ async function scrapeAYT(context, type) {
         "https://yokatlas.yok.gov.tr/tercih-sihirbazi-t4-tablo.php?p=" + type;
     await page.goto(url);
 
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(2000);
 
     const insertStmt = db.prepare(`
             INSERT INTO ${type}Data (
@@ -178,7 +179,7 @@ async function scrapeAYT(context, type) {
                 base_score_2024,
                 base_score_2023,
                 base_score_2022,
-                base_score_2021,
+                base_score_2021
                 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `);
 
@@ -298,8 +299,8 @@ async function scrapeAYT(context, type) {
                 rowObj.universityName,
                 rowObj.faculty,
                 rowObj.className,
-                rowObj.city,
                 rowObj.educationDuration,
+                rowObj.city,
                 rowObj.universityStyle,
                 rowObj.scholarshipRate,
                 rowObj.educationStyle,
