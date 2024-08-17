@@ -98,10 +98,14 @@ async function scrapeTYT(context) {
                 studentQuota2023,
                 studentStatus2024,
                 studentStatus2023,
-                baseScore2024,
-                baseScore2023,
-                tbs2024,
-                tbs2023,
+                baseScore2024: isNaN(Number(baseScore2024))
+                    ? null
+                    : baseScore2024,
+                baseScore2023: isNaN(Number(baseScore2023))
+                    ? null
+                    : baseScore2023,
+                tbs2024: isNaN(Number(tbs2024)) ? null : tbs2024,
+                tbs2023: isNaN(Number(tbs2023)) ? null : tbs2023,
             };
 
             insertStmt.run(
@@ -260,18 +264,26 @@ async function scrapeAYT(context, type) {
                 studentQuota2022,
                 studentQuota2021,
                 fullnessStatus,
-                enrolled2024,
-                enrolled2023,
-                enrolled2022,
-                enrolled2021,
-                tbs2024,
-                tbs2023,
-                tbs2022,
-                tbs2021,
-                baseScore2024,
-                baseScore2023,
-                baseScore2022,
-                baseScore2021,
+                enrolled2024: isNaN(Number(enrolled2024)) ? null : enrolled2024,
+                enrolled2023: isNaN(Number(enrolled2023)) ? null : enrolled2023,
+                enrolled2022: isNaN(Number(enrolled2022)) ? null : enrolled2022,
+                enrolled2021: isNaN(Number(enrolled2021)) ? null : enrolled2021,
+                tbs2024: isNaN(Number(tbs2024)) ? null : tbs2024,
+                tbs2023: isNaN(Number(tbs2023)) ? null : tbs2023,
+                tbs2022: isNaN(Number(tbs2022)) ? null : tbs2022,
+                tbs2021: isNaN(Number(tbs2021)) ? null : tbs2021,
+                baseScore2024: isNaN(Number(baseScore2024))
+                    ? null
+                    : baseScore2024,
+                baseScore2023: isNaN(Number(baseScore2023))
+                    ? null
+                    : baseScore2023,
+                baseScore2022: isNaN(Number(baseScore2022))
+                    ? null
+                    : baseScore2022,
+                baseScore2021: isNaN(Number(baseScore2021))
+                    ? null
+                    : baseScore2021,
             };
 
             insertStmt.run(
