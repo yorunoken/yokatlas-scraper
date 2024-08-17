@@ -220,8 +220,8 @@ async function scrapeAYT(context, type) {
                 faculty,
                 _, // "Akademik Kadro" bunu yok sayıyoruz
                 className,
-                city,
                 educationDuration,
+                city,
                 universityStyle,
                 scholarshipRate,
                 educationStyle,
