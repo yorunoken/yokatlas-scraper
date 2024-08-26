@@ -340,7 +340,7 @@ async function main() {
     console.log("scraping SAY");
     await scrapeAYT(context, "say");
     console.log("scraping SOZ");
-    await scrapeAYT(context, "söz");
+    await scrapeAYT(context, "soz");
     console.log("scraping EA");
     await scrapeAYT(context, "ea");
     console.log("scraping DIL");
